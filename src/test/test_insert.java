@@ -9,14 +9,19 @@ import org.junit.jupiter.api.Test;
 
 import quiz1.dbOperation12;
 
-class test_selectdb {
-int value;
+class test_insert {
+
 	@Test
 	void test() {
-		String username = "a";
-		String passw = "a";
+		int value;
+		String f_name ="a";
+		String l_name = "b";
+		String sql = "insert into register"
+					+"(first_name,last_name)"
+					+"values('"+f_name+"','"+l_name+"')";
+		String query = "select first_name from register where user_id = 1";	
 		dbOperation12 db = new dbOperation12();
-		String query = "select * from register where username = '"+username+"' and password = '"+passw+"'";
+		int ans = db.insert(sql);
 		ResultSet rs = db.select(query);
 		value = 0;
 		try {
@@ -26,7 +31,7 @@ int value;
 		} catch (SQLException throwables) {
 		throwables.printStackTrace();
 		}
-		assertEquals(1,value);
+		assertEquals(1,ans);
 	}
 
 }
